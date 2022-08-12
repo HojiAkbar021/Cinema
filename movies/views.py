@@ -116,15 +116,3 @@ def movie_delete(request,id):
     return render(request, 'index.html', context)
 
 
-def post_delete(request, id):
-    setting=Setting.objects.latest('id')
-    post= Post.objects.get(id=id)
-    if request.method == "POST":
-        post = Post.objects.get(id=id)
-        post.delete()
-        return redirect('index')
-    context={
-        'setting': setting,
-        'post': post,
-    }
-    return render(request, 'index.html', context) 
