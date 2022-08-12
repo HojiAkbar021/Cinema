@@ -54,7 +54,7 @@ def movie_create(request):
         'setting': setting,
         'category': category,
     }
-    return render(request, 'movie_add.html', context)
+    return render(request, 'index.html', context)
 
 def movie_update(request, id):
     setting= Setting.objects.latest('id')
@@ -92,7 +92,7 @@ def movie_update(request, id):
             movie.fees_in_world = fees_in_world
             movie.category = category   
             movie.save()
-            return redirect('movie_details', movie.id)
+            return redirect('index', movie.id)
         except:
                 return HttpResponse('Error')
     context={
@@ -100,7 +100,7 @@ def movie_update(request, id):
         'movie': movie,
         'category': category,
     }
-    return render(request, 'movie_update.html', context)
+    return render(request, 'index.html', context)
 
 def movie_delete(request,id):
     setting= Setting.objects.latest('id')
@@ -113,7 +113,7 @@ def movie_delete(request,id):
         'setting': setting,
         'movie': movie,
     }
-    return render(request, 'delete.html', context)
+    return render(request, 'index.html', context)
 
 
 def post_delete(request, id):
@@ -127,4 +127,4 @@ def post_delete(request, id):
         'setting': setting,
         'post': post,
     }
-    return render(request, 'posts/delete.html', context) 
+    return render(request, 'index.html', context) 
