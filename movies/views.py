@@ -4,9 +4,6 @@ from django.shortcuts import render, redirect
 from movies.models import Setting, Movie, Category
 
 
-
-
-
 def settings(request):
     setting = Setting.objects.latest('id')
     context = {
@@ -56,6 +53,7 @@ def movie_create(request):
     }
     return render(request, 'index.html', context)
 
+
 def movie_update(request, id):
     setting= Setting.objects.latest('id')
     movie= Movie.objects.get(id=id)
@@ -93,6 +91,7 @@ def movie_update(request, id):
             movie.category = category   
             movie.save()
             return redirect('index', movie.id)
+
         except:
                 return HttpResponse('Error')
     context={
@@ -114,5 +113,4 @@ def movie_delete(request,id):
         'movie': movie,
     }
     return render(request, 'index.html', context)
-
 

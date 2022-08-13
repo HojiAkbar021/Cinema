@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'movies',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -64,13 +65,13 @@ WSGI_APPLICATION = 'FILM.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME': NAME,
-    'USER': USER,
-    'PASSWORD': PASSWORD,
-    'HOST': HOST,
-    'PORT': PORT,
+        'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'cinema',
+        'USER': 'murad',
+        'PASSWORD': '01072005',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -107,7 +108,8 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+AUTH_USER_MODEL = "users_management.User"
+AUTH_USER_MODEL = 'users.User'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/

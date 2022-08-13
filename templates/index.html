@@ -11,6 +11,10 @@
         <!-- Header section -->
         <header class="header-wrapper header-wrapper--home">
             <div class="container">
+                <!-- Logo link-->
+                <a href="{% url 'index' %}" class="logo">
+                    <img alt='logo' src="{{ setting.logo.url }}">
+                </a>
                 <!-- Header Logo Start -->
                 <div class="header-logo text-center">
                     <a href="{% url 'index' %}"><img src="{{ setting.logo.url }}" width="30%" alt=""></a>
@@ -337,8 +341,8 @@
                                     data-endspeed="500"
                                    
                                     data-endeasing="Back.easeIn"
-                                     >
-                                    MAX-Movie
+                                    >
+                                    Travel, Admire, Remember.
                                 </div>
 
                                 <div class="caption slide__time position-center postion-place--one sfr stl" 
