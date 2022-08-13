@@ -58,6 +58,7 @@ def profile(request, id):
     context = {
         'user' : user,
         'setting' : setting,
+
     }
     return render(request, 'users/profile.html', context)
 

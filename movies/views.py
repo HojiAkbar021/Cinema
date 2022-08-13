@@ -114,6 +114,3 @@ def movie_delete(request,id):
     }
     return render(request, 'index.html', context)
 
-
-
-
