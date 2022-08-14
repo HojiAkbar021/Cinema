@@ -1,5 +1,6 @@
 {% extends 'include/homepage.html' %}
 {% load static %}
+{% load socialaccount %}
 {% block content %}
 
     <div class="wrapper">
@@ -144,7 +145,7 @@
                         </span>
                       </div>
                       <a href="index.html#" class="btn btn--sign btn--singin">
-                          me
+                        {{ users.user_name }}
                       </a>
                         <ul class="auth__function">
                             <li><a href="index.html#" class="auth__function-item">Watchlist</a></li>
@@ -154,9 +155,8 @@
                         </ul>
 
                     </div>
-                    <a href="index.html#" class="btn btn-md btn--warning btn--book btn-control--home login-window">Book a ticket</a>
+                    <a href="{% provider_login_url 'google' %}" class="btn btn-md btn--warning btn--book btn-control--home login-window">Book a ticket</a>
                 </div>
-
             </div>
         </header>
 
