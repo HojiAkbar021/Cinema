@@ -6,14 +6,16 @@ from movies.models import Setting, Movie, Category
 
 def settings(request):
     setting = Setting.objects.latest('id')
+    movie = Movie.objects.get()
     context = {
         'setting' : setting,
+        'movie' : movie
     }
     return render(request, 'index.html', context)
 
 
 def movie_create(request):
-    setting= Setting.objects.latest()
+    setting= Setting.objects.latest('description')
     category= Category.objects.all()
     if request.method == "POST":
         title= request.POST.get('title')
@@ -31,12 +33,12 @@ def movie_create(request):
         fees_in_world= request.POST.get('fess_in_world')
         category= request.POST.get('category')
         movie= Movie.objects.create(
-                                        title= title, 
-                                        tagline= tagline,
-                                        description= description, 
-                                        poster= poster,
-                                        year= year,
-                                        country= country,
+                                    title= title, 
+                                    tagline= tagline,
+                                    description= description, 
+                                    poster= poster,
+                                    year= year,
+                                    country= country,
                                         directors= directors,
                                         actors= actors,
                                         genres= genres,
@@ -52,6 +54,15 @@ def movie_create(request):
         'category': category,
     }
     return render(request, 'index.html', context)
+
+def movie_detail(request, id):
+    movie = Movie.objects.get(id = id)
+    setting = Setting.latest('id')
+    context = {
+        'setting' : setting,
+        'movie' : movie
+    }
+    return render(request, 'movie_page-fuul.html', context) 
 
 
 def movie_update(request, id):

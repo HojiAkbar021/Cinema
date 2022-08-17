@@ -55,7 +55,7 @@ class Genre(models.Model):
     """Жанры"""
     name = models.CharField("Имя", max_length=100)
     description = models.TextField("Описание")
-    url = models.SlugField(max_length=160, unique=True)
+    url = models.SlugField(max_length=160, unique=True, null=True)
 
     def __str__(self):
         return self.name
@@ -63,6 +63,16 @@ class Genre(models.Model):
     class Meta:
         verbose_name = "Жанр"
         verbose_name_plural = "Жанры"
+
+class Raiting(models.Model):
+    grade = models.SmallIntegerField("Оценка")
+
+    def __str__(self):
+        return self.grade
+    
+    class Meta:
+        verbose_name = "Оценка"
+        verbose_name_plural = "Оценки"
 
 
 class Movie(models.Model):
@@ -72,6 +82,7 @@ class Movie(models.Model):
     description = models.TextField("Описание")
     poster = models.ImageField("Постер", upload_to="movies/")
     duration = models.IntegerField("Длительность", default=0)
+    raiting = models.SmallIntegerField(Raiting, help_text="указывать только от 1 до 5", default=0)
     year = models.PositiveSmallIntegerField("Дата выхода", default=2019)
     country = models.CharField("Страна", max_length=30)
     directors = models.ManyToManyField(Actor, verbose_name="режиссер", related_name="film_director")

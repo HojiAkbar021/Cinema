@@ -104,8 +104,8 @@ WSGI_APPLICATION = 'FILM.wsgi.application'
 DATABASES = {
     'default': {
     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME': 'django',
-    'USER': 'movie',
+    'NAME': 'uulbu',
+    'USER': 'uulbu',
     'PASSWORD': 'uulbu021007',
     'HOST': 'localhost',
     'PORT': '5432',
